@@ -3,11 +3,9 @@ mod event_handlers;
 
 use winit::{
     event::{Event, WindowEvent},
+    event_loop::{ControlFlow, EventLoop},
     window::WindowBuilder,
-    event_loop::{EventLoop, ControlFlow},
 };
-
-
 
 fn main() {
     let event_loop_instance = EventLoop::new();
@@ -28,7 +26,7 @@ fn main() {
             Event::MainEventsCleared => {
                 window.request_redraw();
             }
-            _ => ()
+            _ => (),
         }
     });
 }
