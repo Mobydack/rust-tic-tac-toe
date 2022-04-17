@@ -1,10 +1,13 @@
 mod config;
+mod event_handlers;
 
 use winit::{
     event::{Event, WindowEvent},
     window::WindowBuilder,
     event_loop::{EventLoop, ControlFlow},
 };
+
+
 
 fn main() {
     let event_loop_instance = EventLoop::new();
@@ -21,9 +24,7 @@ fn main() {
             Event::WindowEvent {
                 event: WindowEvent::CloseRequested,
                 ..
-            } => {
-                *control_flow = ControlFlow::Exit
-            }
+            } => event_handlers::close_window::handler(control_flow),
             Event::MainEventsCleared => {
                 window.request_redraw();
             }
